@@ -10,26 +10,34 @@
       display: flex;
       justify-content: center;   /* center horizontally */
       align-items: center;       /* center vertically */
-      height: 100vh;             /* full screen height */
+      height: 100vh;
     }
 
     #widget-container {
-      transform: scale(2);       /* 👈 makes it bigger (adjust 1.5–3) */
+      width: 90%;
+      max-width: 1000px;
+    }
+
+    /* Make widget text bigger */
+    #oilpriceapi-ticker {
+      width: 100%;
+      font-size: 1.8rem;
     }
   </style>
-
 </head>
 
 <body>
 
-<div id="widget-container">
-  <div id="oilpriceapi-ticker"
-       data-theme="dark"
-       data-commodities="BRENT,WTI"
-       data-layout="horizontal"></div>
-</div>
+  <div id="widget-container">
+    <div id="oilpriceapi-ticker"
+         data-theme="dark"
+         data-commodities="BRENT,WTI"
+         data-layout="horizontal">
+    </div>
+  </div>
 
-<script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
+  <script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
 
 </body>
 </html>
+``
