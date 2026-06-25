@@ -9,17 +9,17 @@
       background: black;
     }
 
-    /* Top full-width ticker bar */
+    /* Full-width fixed top bar */
     #ticker-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       background: #0b1a2e;
-      padding: 18px 0;
-      z-index: 9999;
+      padding: 20px 0;
       display: flex;
       justify-content: center;
+      z-index: 9999;
       border-bottom: 2px solid #1f2f4a;
     }
 
@@ -34,21 +34,17 @@
       font-weight: bold;
     }
 
-    /* 🔥 FORCE STRONG GREEN (up prices) */
+    /* Strong colors for up/down */
     #oilpriceapi-ticker .positive,
     #oilpriceapi-ticker .up {
       color: #00ff88 !important;
+      text-shadow: 0 0 6px #00ff88;
     }
 
-    /* 🔥 FORCE STRONG RED (down prices) */
     #oilpriceapi-ticker .negative,
     #oilpriceapi-ticker .down {
       color: #ff4d4d !important;
-    }
-
-    /* Optional: make % change stand out more */
-    #oilpriceapi-ticker span {
-      margin-right: 10px;
+      text-shadow: 0 0 6px #ff4d4d;
     }
   </style>
 </head>
@@ -67,10 +63,11 @@
     </div>
   </div>
 
-  <div style="height: 80px;"></div>
+  <!-- spacer so content below isn't hidden -->
+  <div style="height: 90px;"></div>
 
-  <script src="https://www.oilpriceapi.com/widgets/ticker.js" async></script>
+  <!-- ✅ REQUIRED SCRIPT (FIXED) -->
+  <script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
 
 </body>
 </html>
-``
