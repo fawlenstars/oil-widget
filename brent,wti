@@ -1,0 +1,3 @@
+<div id="oilpriceapi-ticker" data-theme="dark"
+data-commodities="BRENT,WTI" data-layout="horizontal"></div>
+<script src="https://www.oilpriceapi.com/widgets/ticker.js" async></script>
