@@ -6,17 +6,24 @@
   <style>
     body {
       margin: 0;
-      background: black;
-
-      /* ✅ TRUE CENTERING */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      background: #060d18;
+      font-family: Arial, sans-serif;
+      color: white;
     }
 
-    /* Container size */
-    #ticker-container {
+    /* Main layout */
+    .dashboard {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    /* Big main widget */
+    .main-widget {
       width: 95%;
       max-width: 1200px;
       background: #0b1a2e;
@@ -25,32 +32,56 @@
       border: 2px solid #1f2f4a;
     }
 
-    /* Make widget BIG */
+    /* Smaller panels */
+    .row {
+      display: flex;
+      gap: 20px;
+      width: 95%;
+      max-width: 1200px;
+    }
+
+    .panel {
+      flex: 1;
+      background: #0b1a2e;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #1f2f4a;
+    }
+
+    /* Widget size */
     #oilpriceapi-ticker {
       width: 100%;
       font-size: 2.2rem;
       font-weight: bold;
     }
 
-    /* Strong green/up */
-    #oilpriceapi-ticker .positive,
-    #oilpriceapi-ticker .up {
+    /* Green / Red highlight */
+    .positive, .up {
       color: #00ff88 !important;
       text-shadow: 0 0 6px #00ff88;
     }
 
-    /* Strong red/down */
-    #oilpriceapi-ticker .negative,
-    #oilpriceapi-ticker .down {
+    .negative, .down {
       color: #ff4d4d !important;
       text-shadow: 0 0 6px #ff4d4d;
+    }
+
+    /* Panel titles */
+    .title {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: #8fa8c9;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 
 <body>
 
-  <div id="ticker-container">
+<div class="dashboard">
+
+  <!-- 🔥 MAIN LARGE TICKER -->
+  <div class="main-widget">
     <div id="oilpriceapi-ticker"
          data-theme="dark"
          data-commodities="BRENT,WTI,NATGAS"
@@ -58,8 +89,42 @@
     </div>
   </div>
 
-  <script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
+  <!-- 🔽 LOWER PANELS -->
+  <div class="row">
+
+    <div class="panel">
+      <div class="title">OIL MARKETS</div>
+      <div id="oilpriceapi-ticker-2"
+           data-theme="dark"
+           data-commodities="BRENT"
+           data-layout="horizontal">
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="title">US CRUDE</div>
+      <div id="oilpriceapi-ticker-3"
+           data-theme="dark"
+           data-commodities="WTI"
+           data-layout="horizontal">
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="title">NATURAL GAS</div>
+      <div id="oilpriceapi-ticker-4"
+           data-theme="dark"
+           data-commodities="NATGAS"
+           data-layout="horizontal">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ✅ SCRIPT (only needed once) -->
+<script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
 
 </body>
 </html>
-``
