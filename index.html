@@ -2,16 +2,34 @@
 <html>
 <head>
   <meta charset="UTF-8">
+
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      display: flex;
+      justify-content: center;   /* center horizontally */
+      align-items: center;       /* center vertically */
+      height: 100vh;             /* full screen height */
+    }
+
+    #widget-container {
+      transform: scale(2);       /* 👈 makes it bigger (adjust 1.5–3) */
+    }
+  </style>
+
 </head>
 
-<body style="margin:0; background:black;">
+<body>
 
-<div id="oilpriceapi-ticker"
-     data-theme="dark"
-     data-commodities="BRENT,WTI"
-     data-layout="horizontal"></div>
+<div id="widget-container">
+  <div id="oilpriceapi-ticker"
+       data-theme="dark"
+       data-commodities="BRENT,WTI"
+       data-layout="horizontal"></div>
+</div>
 
-<script src="https://www.oilpriceapi.com/widgets/ticker.js" async></script>
+<script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
 
 </body>
 </html>
