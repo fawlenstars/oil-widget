@@ -7,37 +7,36 @@
     body {
       margin: 0;
       background: black;
+    }
+
+    /* Full-width top ticker bar */
+    #ticker-bar {
+      position: fixed;     /* stays at top */
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #0b1a2e; /* dark finance-style blue */
+      padding: 15px 0;
+      z-index: 9999;
       display: flex;
-      justify-content: center;   /* center horizontally */
-      align-items: center;       /* center vertically */
-      height: 100vh;
+      justify-content: center;
     }
 
     #widget-container {
-      width: 90%;
-      max-width: 1000px;
+      width: 95%;
+      max-width: 1400px;
     }
 
-    /* Make widget text bigger */
+    /* Make text larger */
     #oilpriceapi-ticker {
       width: 100%;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
   </style>
 </head>
 
 <body>
 
-  <div id="widget-container">
-    <div id="oilpriceapi-ticker"
-         data-theme="dark"
-         data-commodities="BRENT,WTI"
-         data-layout="horizontal">
-    </div>
-  </div>
-
-  <script src="https://www.oilpriceapi.com/widgets/ticker.js"></script>
-
-</body>
-</html>
-``
+  <!-- Top Banner -->
+  <div id="ticker-bar">
+    <div id="widget-container">
