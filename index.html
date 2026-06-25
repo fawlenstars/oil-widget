@@ -9,34 +9,19 @@
       background: black;
     }
 
-    /* Full-width top ticker bar */
+    /* Top full-width ticker bar */
     #ticker-bar {
-      position: fixed;     /* stays at top */
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: #0b1a2e; /* dark finance-style blue */
-      padding: 15px 0;
+      background: #0b1a2e;
+      padding: 18px 0;
       z-index: 9999;
       display: flex;
       justify-content: center;
     }
 
-    #widget-container {
+    /* Keeps content centered inside the bar */
+    #ticker-inner {
       width: 95%;
-      max-width: 1400px;
-    }
-
-    /* Make text larger */
-    #oilpriceapi-ticker {
-      width: 100%;
-      font-size: 1.6rem;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Top Banner -->
-  <div id="ticker-bar">
-    <div id="widget-container">
