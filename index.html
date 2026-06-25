@@ -20,8 +20,57 @@
       z-index: 9999;
       display: flex;
       justify-content: center;
+      border-bottom: 2px solid #1f2f4a;
     }
 
-    /* Keeps content centered inside the bar */
     #ticker-inner {
       width: 95%;
+      max-width: 1400px;
+    }
+
+    #oilpriceapi-ticker {
+      width: 100%;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    /* 🔥 FORCE STRONG GREEN (up prices) */
+    #oilpriceapi-ticker .positive,
+    #oilpriceapi-ticker .up {
+      color: #00ff88 !important;
+    }
+
+    /* 🔥 FORCE STRONG RED (down prices) */
+    #oilpriceapi-ticker .negative,
+    #oilpriceapi-ticker .down {
+      color: #ff4d4d !important;
+    }
+
+    /* Optional: make % change stand out more */
+    #oilpriceapi-ticker span {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="ticker-bar">
+    <div id="ticker-inner">
+
+      <div id="oilpriceapi-ticker"
+           data-theme="dark"
+           data-commodities="BRENT,WTI,NATGAS"
+           data-layout="horizontal">
+      </div>
+
+    </div>
+  </div>
+
+  <div style="height: 80px;"></div>
+
+  <script src="https://www.oilpriceapi.com/widgets/ticker.js" async></script>
+
+</body>
+</html>
+``
