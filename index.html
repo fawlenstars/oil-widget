@@ -11,43 +11,32 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
 }
 
 /* Container */
 #ticker-container {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Inner wrapper */
-#ticker-inner {
-  width: 100%;
-  display: flex;
-  justify-content: center;
   overflow: visible;
 }
 
-/* Scale + spacing */
+/* Correct scaling */
 #oilpriceapi-ticker {
   transform: scale(5);
   transform-origin: center;
-  width: 200%;   /* slightly wider for better spacing */
+  display: inline-block;
 }
 
 /* Colors */
 #oilpriceapi-ticker .positive,
 #oilpriceapi-ticker .up {
   color: #00ff88 !important;
-  text-shadow: 0 0 15px #00ff88;
 }
 
 #oilpriceapi-ticker .negative,
 #oilpriceapi-ticker .down {
   color: #ff4d4d !important;
-  text-shadow: 0 0 15px #ff4d4d;
 }
 </style>
 </head>
@@ -55,12 +44,10 @@ body {
 <body>
 
 <div id="ticker-container">
-  <div id="ticker-inner">
-    <div id="oilpriceapi-ticker"
-         data-theme="dark"
-         data-commodities="BRENT,WTI,NATGAS"
-         data-layout="horizontal">
-    </div>
+  <div id="oilpriceapi-ticker"
+       data-theme="dark"
+       data-commodities="BRENT,WTI,NATGAS"
+       data-layout="horizontal">
   </div>
 </div>
 
