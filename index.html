@@ -14,34 +14,35 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* BIG CENTER PANEL */
+/* Container fills most of screen */
 #ticker-container {
   width: 95%;
-  max-width: 1600px;
+  height: 60vh; /* helps centering with scale */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #0b1a2e;
-  padding: 60px;            /* 🔥 much larger padding */
   border-radius: 20px;
   border: 3px solid #1f2f4a;
 }
 
-/* FORCE VERY LARGE TEXT */
+/* 🔥 ULTRA LARGE TV SCALE */
 #oilpriceapi-ticker {
-  width: 100%;
-  transform: scale(3.2);      /* 🔥 BIG SCALE for TV */
+  transform: scale(7);
   transform-origin: center;
 }
 
-/* GREEN / RED highlight */
+/* Bright colors for visibility */
 #oilpriceapi-ticker .positive,
 #oilpriceapi-ticker .up {
   color: #00ff88 !important;
-  text-shadow: 0 0 12px #00ff88;
+  text-shadow: 0 0 20px #00ff88;
 }
 
 #oilpriceapi-ticker .negative,
 #oilpriceapi-ticker .down {
   color: #ff4d4d !important;
-  text-shadow: 0 0 12px #ff4d4d;
+  text-shadow: 0 0 20px #ff4d4d;
 }
 </style>
 </head>
