@@ -8,36 +8,35 @@ body {
   margin: 0;
   background: #060d18;
   display: flex;
+  flex-direction: column;      /* stack title + ticker */
   justify-content: center;
   align-items: center;
   height: 100vh;
   font-family: Arial, sans-serif;
 }
 
-/* FULL SCREEN CONTAINER */
+/* 🔥 HEADER TEXT */
+#title {
+  color: #ffffff;
+  font-size: 4rem;             /* BIG for TV */
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px #00ffcc;
+}
+
+/* Container */
 #ticker-container {
   width: 100%;
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* INNER WRAPPER — IMPORTANT */
-#ticker-inner {
-  width: 100%;
   display: flex;
   justify-content: center;
 }
 
-/* SCALE + WIDTH FIX */
+/* Scale + width fix */
 #oilpriceapi-ticker {
   transform: scale(5);
   transform-origin: center;
-
-  /* 👇 THIS FIXES THE "SMALL BOX" PROBLEM */
-  width: 180%;   /* increase to spread items apart */
+  width: 180%;
 }
 
 /* Colors */
@@ -57,15 +56,13 @@ body {
 
 <body>
 
+<div id="title">LIVE OIL PRICES</div>
+
 <div id="ticker-container">
-  <div id="ticker-inner">
-
-    <div id="oilpriceapi-ticker"
-         data-theme="dark"
-         data-commodities="BRENT,WTI,NATGAS"
-         data-layout="horizontal">
-    </div>
-
+  <div id="oilpriceapi-ticker"
+       data-theme="dark"
+       data-commodities="BRENT,WTI,NATGAS"
+       data-layout="horizontal">
   </div>
 </div>
 
@@ -73,4 +70,4 @@ body {
 
 </body>
 </html>
-``
+
