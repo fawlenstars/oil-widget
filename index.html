@@ -2,16 +2,19 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Energy Ticker</title>
+    <title>Energy Price Ticker</title>
 </head>
-<body style="margin:0;background:black;">
+<body style="margin:0;background:#000;">
 
+<!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
   <div class="tradingview-widget-container__widget"></div>
 
-  <script
-    type="text/javascript"
-    src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tapede"
+  <script type="text/javascript"
+    src="https://s3.tradingview.com/external-embeddingmbols": [
+      {
+        "proName": "TVC:USOIL",
+        "title": "WTI Crude"
       },
       {
         "proName": "TVC:UKOIL",
@@ -29,9 +32,8 @@
     "locale": "en"
   }
   </script>
-
 </div>
+<!-- TradingView Widget END -->
 
 </body>
 </html>
- 
