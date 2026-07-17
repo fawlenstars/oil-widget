@@ -2,70 +2,79 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>Energy Price Ticker</title>
 
 <style>
 body {
-  margin: 0;
-  background: #060d18;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: Arial, sans-serif;
+    margin: 0;
+    background: #111;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
-/* Container */
-#ticker-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+    padding: 10px 0;
 }
 
-/* Inner wrapper */
-#ticker-inner {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  overflow: visible;
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
 }
 
-/* Scale + spacing */
-#oilpriceapi-ticker {
-  transform: scale(5);
-  transform-origin: center;
-  width: 200%;
-  display: inline-block;
+.item {
+    display: inline-block;
+    margin-right: 60px;
+    font-size: 24px;
 }
 
-/* Colors */
-#oilpriceapi-ticker .positive,
-#oilpriceapi-ticker .up {
-  color: #00ff88 !important;
-  text-shadow: 0 0 15px #00ff88;
-}
+.up { color: #00ff00; }
+.down { color: #ff4444; }
 
-#oilpriceapi-ticker .negative,
-#oilpriceapi-ticker .down {
-  color: #ff4d4d !important;
-  text-shadow: 0 0 15px #ff4d4d;
+@keyframes ticker {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
 }
 </style>
 </head>
 
 <body>
 
-<div id="ticker-container">
-  <div id="ticker-inner">
-    <div id="oilpriceapi-ticker"
-         data-theme="dark"
-         data-commodities="BRENT,WTI,NATGAS"
-         data-layout="horizontal">
+<div class="ticker-wrap">
+    <div class="ticker" id="ticker">
+        Loading prices...
     </div>
-  </div>
 </div>
 
-://www.oilpriceapi.com/widgets/ticker.js"></script>
+<script>
+async function updatePrices() {
 
+    const response = await fetch(
+        "https://api.oilpriceapi.com/v1/prices/latest",
+        {
+            headers: {
+                "Authorization": "Token YOUR_API_KEY"
+            }
+        }
+    );
+
+    const data = await response.json();
+
+    document.getElementById("ticker").innerHTML = `
+        <span class="item">🛢️ WTI: $${data.wti.price}</span>
+        <span class="item">🛢️ Brent: $${data.brent.price}</span>
+        <span class="item">🔥 Nat Gas: $${data.natural_gas.price}</span>
+    `;
+}
+
+updatePrices();
+setInterval(updatePrices, 60000);
+</script>
+
+</body>
+</html>
 </body>
 </html>
