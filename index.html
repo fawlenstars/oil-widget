@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Energy Ticker</title>
+  <title>Energy Price Ticker</title>
 </head>
-<body>
+<body style="margin:0;background:#000;">
 
 <div class="tradingview-widget-container">
-  <div id="tradingview_widget"></div>
-</div>
+  <div class="tradingview-widget-container__widget"></div>
 
-<script src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js">
-{
- {
-      "description": "WTI Crude Oil",
-      "proName": "TVC:USOIL"
+  <script type="text/javascript"
+    src="https://s3d-widget-ticker-tape.js  "symbols": [
+    {
+      "proName": "TVC:USOIL",
+      "title": "WTI Crude"
     },
     {
-      "description": "Brent Crude Oil",
-      "proName": "TVC:UKOIL"
+      "proName": "TVC:UKOIL",
+      "title": "Brent Crude"
     },
     {
-      "description": "Natural Gas",
-      "proName": "NYMEX:NG1!"
+      "proName": "NYMEX:NG1!",
+      "title": "Natural Gas"
     }
   ],
-  "colorTheme": "dark",
-  "isTransparent": false,
   "showSymbolLogo": true,
+  "isTransparent": false,
+  "displayMode": "adaptive",
+  "colorTheme": "dark",
   "locale": "en"
 }
-</script>
+  </script>
+</div>
 
 </body>
 </html>
+ 
