@@ -1,36 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
     margin:0;
-    background:black;
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
 }
 
-.row{
+.dashboard{
     display:flex;
-    gap:120px;
-    padding:40px;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    height:100vh;
+    padding:20px;
+    box-sizing:border-box;
 }
 
-.widget{
-    transform:scale(5);
-    transform-origin:top left;
+.card{
+    background:#111;
+    border:2px solid #333;
+    border-radius:20px;
+    padding:30px;
+    width:300px;
+    text-align:center;
+}
+
+.title{
+    font-size:32px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.price{
+    font-size:64px;
+    font-weight:bold;
+    color:#00d26a;
+}
+
+.change{
+    margin-top:10px;
+    font-size:24px;
+}
+
+.updated{
+    position:fixed;
+    bottom:10px;
+    right:20px;
+    color:#999;
+    font-size:14px;
 }
 </style>
 </head>
 <body>
 
-<div class="row">
-
-    <div class="widget">
-        <!-- WTI -->
-        <script src="https://www.oil-price.net/TINY_CHART/gen.php?lang=en"></script>
-    </div>
-
-    <div class="widget">
-        <!-- Brent widget URL if supported by provider -->
-        <script src="https://www.oil-price.net/TINY_CHART/gen.php?lang=en&oil=brent"></scriptv>
-
-</body>
-</html>
+<div class="dashboard
