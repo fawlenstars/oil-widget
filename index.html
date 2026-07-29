@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Energy Ticker</title>
-<style>
-body {
-    margin: 0;
-    background: #000;
-}
-iframe {
-    border: 0;
-    width: 100%;
-    height: 80px;
-}
-</style>
-</head>
-<body>
+app.get('/api/prices', async (req, res) => {
+    const response = await fetch(
+        'https://api.oilpriceapi.com/v1/prices/latest?by_code=WTI_USD,BRENT_USD',
+        {
+            headers: {
+                Authorization: `Token ${process.env.OILPRICE_API_KEY}`
+            }
+        }
+    );
 
-<iframe
-src="https://widget.finnhub.io/widgets/forex?symbol=
-</body>
-</html>
+    const data = await response.json();
+    res.json(data);
+});
