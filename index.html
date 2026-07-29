@@ -3,64 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Energy Prices</title>
+<title>Live Energy Markets</title>
 
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f9;
+body{
+    margin:0;
+    background:#f4f6f9;
+    font-family:Arial,sans-serif;
 }
 
-.header {
-    background: #003366;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    font-size: 40px;
-    font-weight: bold;
+.header{
+    background:#003366;
+    color:white;
+    text-align:center;
+    padding:20px;
+    font-size:36px;
+    font-weight:bold;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    padding: 40px;
-    flex-wrap: wrap;
+.container{
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    flex-wrap:wrap;
+    padding:40px;
 }
 
-.card {
-    background: white;
-    width: 300px;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
-    text-align: center;
+.card{
+    background:white;
+    width:280px;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+    text-align:center;
 }
 
-.name {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.name{
+    font-size:24px;
+    font-weight:bold;
 }
 
-.price {
-    font-size: 48px;
-    color: #003366;
+.price{
+    font-size:42px;
+    color:#003366;
+    margin-top:15px;
 }
 
-.change {
-    font-size: 22px;
-    margin-top: 10px;
+.change{
+    font-size:20px;
+    margin-top:10px;
 }
 
-.positive { color: green; }
-.negative { color: red; }
+.positive{
+    color:green;
+}
 
-.updated {
-    text-align: center;
-    margin: 20px;
-    color: #666;
+.negative{
+    color:red;
+}
+
+.updated{
+    text-align:center;
+    color:#666;
+    padding-bottom:20px;
 }
 </style>
 </head>
@@ -71,7 +76,6 @@ body {
 </div>
 
 <div class="container">
-
     <div class="card">
         <div class="name">WTI Crude</div>
         <div class="price" id="wti">$--</div>
@@ -89,16 +93,15 @@ body {
         <div class="price" id="gas">$--</div>
         <div class="change" id="gas-change"></div>
     </div>
-
 </div>
 
 <div class="updated" id="updated">
-Loading...
+Loading prices...
 </div>
 
 <script>
 
-const API_KEY = "PASTE_YOUR_API_KEY_HERE";
+const API_KEY = "YOUR_API_KEY_HERE";
 
 async function loadPrices() {
 
@@ -115,44 +118,50 @@ async function loadPrices() {
 
         const result = await response.json();
 
+        console.log(result);
+
         result.data.prices.forEach(item => {
 
-            let target;
+            if(item.code.includes("WTI")){
+                document.getElementById("wti").innerHTML =
+                    "$" + item.price.toFixed(2);
 
-            if(item.code.includes("WTI"))
-                target = "wti";
+                document.getElementById("wti-change").innerHTML =
+                    item.change_percent.toFixed(2) + "%";
+            }
 
-            if(item.code.includes("BRENT"))
-                target = "brent";
+            if(item.code.includes("BRENT")){
+                document.getElementById("brent").innerHTML =
+                    "$" + item.price.toFixed(2);
 
-            if(item.code.includes("GAS"))
-                target = "gas";
+                document.getElementById("brent-change").innerHTML =
+                    item.change_percent.toFixed(2) + "%";
+            }
 
-            if(!target) return;
+            if(item.code.includes("GAS")){
+                document.getElementById("gas").innerHTML =
+                    "$" + item.price.toFixed(2);
 
-            document.getElementById(target).innerHTML =
-                "$" + item.price.toFixed(2);
-
-            document.getElementById(target + "-change").innerHTML =
-                `${item.change >= 0 ? "+" : ""}${item.change_percent.toFixed(2)}%`;
-
-            document.getElementById(target + "-change").className =
-                "change " + (item.change >= 0 ? "positive" : "negative");
+                document.getElementById("gas-change").innerHTML =
+                    item.change_percent.toFixed(2) + "%";
+            }
         });
 
         document.getElementById("updated").innerHTML =
-            "Updated: " + new Date().toLocaleString();
+            "Updated " + new Date().toLocaleString();
 
-    } catch(e) {
+    }
+    catch(error){
+
+        console.error(error);
 
         document.getElementById("updated").innerHTML =
-            "Unable to load prices";
+            "Unable to load prices. Check API key and browser console.";
     }
 }
 
 loadPrices();
-
-setInterval(loadPrices, 300000);
+setInterval(loadPrices,300000);
 
 </script>
 
