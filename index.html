@@ -1,13 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Live Oil Prices</title>
+
 <style>
 body{
     margin:0;
-    background:#fff;
+    padding:20px;
+    font-family:Arial, sans-serif;
+    background:#ffffff;
 }
+
+.container{
+    max-width:900px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    color:#222;
+}
+
 iframe{
     width:100%;
     height:600px;
@@ -15,9 +30,12 @@ iframe{
 }
 </style>
 </head>
+
 <body>
 
-<iframe
-src="https://api.tradingeconomics.com/embed/?s=crudeoil:com&v=202301
-</body>
-</html>
+<div class="container">
+    <h1>Live Oil Prices</h1>
+
+    <iframe
+        src="https://widgets.myfxbook.com/widgets/market/quots.html?symbols=CL_F,BZ_F"
+        loading="
