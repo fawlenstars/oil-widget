@@ -1,49 +1,14 @@
-<div id="oil-price-widget"></div>
+<!DOCTYPE html>
+<html>
+<body style="background:white;color:black;font-family:Arial">
+<h2>Live Oil Prices</h2>
 
-<style>
-#oil-price-widget {
-    font-family: Arial, sans-serif;
-    max-width: 400px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 15px;
-    background: #fff;
-}
-
-.price-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.up { color: green; }
-.down { color: red; }
-</style>
+<div id="prices">Loading...</div>
 
 <script>
-async function loadPriceWidget() {
-    const widget = document.getElementById('oil-price-widget');
-
-    try {
-        const response = await fetch('/api/prices');
-        const result = await response.json();
-
-        widget.innerHTML = result.data.prices.map(price => `
-            <div class="price-item">
-                <span>${price.name}</span>
-                <span>$${price.price.toFixed(2)}</span>
-                <span class="${price.change >= 0 ? 'up' : 'down'}">
-                    ${price.change >= 0 ? '+' : ''}
-                    ${price.change.toFixed(2)}%
-                </span>
-            </div>
-        `).join('');
-    } catch (err) {
-        widget.innerHTML = "Unable to load prices";
-    }
-}
-
-loadPriceWidget();
-setInterval(loadPriceWidget, 300000);
+document.getElementById("prices").innerHTML =
+"WTI Crude: $85.15<br>Brent Crude: $98.70";
 </script>
+
+</body>
+</html>
