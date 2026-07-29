@@ -1,22 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Oil Price Display</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Energy Prices</title>
+
 <style>
-body{
-    font-family:Arial;
-    background:white;
-    color:black;
-    text-align:center;
-    padding-top:100px;
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: #003366;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.frame-container {
+    width: 100%;
+    height: calc(100vh - 60px);
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 </style>
 </head>
+
 <body>
 
-<h1>Live Oil Price Screen</h1>
-<p>GitHub Pages is working correctly.</p>
-<p>Next step: connect a live data source.</p>
+<div class="header">
+    Live Energy Markets
+</div>
 
-</body>
-</html>
+<div class="frame-container">
+    <iframe
+        src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_widget&symbol=TVC%3AUSOIL&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=0&toolbarbg=f1f3f6&studies=[]&theme=light"
+        allowtransparency
